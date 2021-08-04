@@ -6,7 +6,6 @@ use App\Http\Requests\DepartmentStoreRequest;
 use App\Http\Requests\DepartmentUpdateRequest;
 use App\Http\Resources\DepartmentResource;
 use App\Models\Department;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -71,10 +70,10 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Department $department)
     {
         //
     }
@@ -82,7 +81,7 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function edit(Department $department)
@@ -97,7 +96,7 @@ class DepartmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function update(DepartmentUpdateRequest $request, Department $department)
@@ -116,7 +115,7 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function destroy(Department $department)

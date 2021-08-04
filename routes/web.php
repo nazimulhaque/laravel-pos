@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
     Route::resource('department', DepartmentController::class);
+    Route::resource('unit', UnitController::class);
     Route::resource('products', ProductController::class);
     Route::resource('customers', CustomerController::class);
     Route::resource('orders', OrderController::class);
