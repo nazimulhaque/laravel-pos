@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartmentTable extends Migration
+class AddQuantityToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateDepartmentTable extends Migration
      */
     public function up()
     {
-        Schema::table('department', function (Blueprint $table) {
-            //
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('quantity')->after('price')->default('1');
         });
     }
 
@@ -25,8 +25,8 @@ class CreateDepartmentTable extends Migration
      */
     public function down()
     {
-        Schema::table('department', function (Blueprint $table) {
-            //
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('quantity');
         });
     }
 }
