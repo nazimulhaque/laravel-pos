@@ -44,6 +44,12 @@
                     </div>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
+                        <i class="nav-icon fas fa-th-large"></i>
+                        <p>Locations</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="{{ route('unit.index') }}" class="nav-link {{ activeSegment('units') }}">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p>Units</p>
