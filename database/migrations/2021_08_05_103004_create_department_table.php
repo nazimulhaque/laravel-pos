@@ -23,7 +23,7 @@ class CreateDepartmentTable extends Migration
             $table->string('last_modified_by', 45)->nullable();
             $table->dateTime('last_modified_date')->nullable();
             $table->smallInteger('record_status')->nullable();
-            // $table->foreign('parent_department_id', 'fk18')->references('department_id')->on('department')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('parent_department_id')->references('department_id')->on('department')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
