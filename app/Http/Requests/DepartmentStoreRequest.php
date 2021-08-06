@@ -24,7 +24,7 @@ class DepartmentStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'department_name' => 'required|string|max:45',
+            'department_name' => 'required|string|max:100',
             // 'parent_department_id' => 'required|integer',
             'description' => 'nullable|string|max:255'
         ];

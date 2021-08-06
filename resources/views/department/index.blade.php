@@ -58,9 +58,9 @@
                 text: "Do you really want to delete this department and all associated sub departments?",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
+                confirmButtonText: 'Yes',
                 cancelButtonText: 'No',
-                reverseButtons: true
+                reverseButtons: false
             }).then((result) => {
                 if (result.value) {
                     $.post($this.data('url'), {

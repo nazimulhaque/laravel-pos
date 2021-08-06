@@ -6,7 +6,7 @@ use App\Http\Resources\LocationResource;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use App\Http\Requests\LocationStoreRequest;
-// use App\Http\Requests\LocationUpdateRequest;
+use App\Http\Requests\LocationUpdateRequest;
 
 class LocationController extends Controller
 {
@@ -55,5 +55,63 @@ class LocationController extends Controller
             return redirect()->back()->with('error', 'Sorry, there was a problem while creating the location.');
         }
         return redirect()->route('location.index')->with('success', 'Success, your location has been created.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Location  $location
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Location $location)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Location  $location
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Location $location)
+    {
+        return view('location.edit')
+            ->with('location', $location);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Location  $location
+     * @return \Illuminate\Http\Response
+     */
+    public function update(LocationUpdateRequest $request, Location $location)
+    {
+        $location->location_name = $request->location_name;
+
+        if (!$location->save()) {
+            return redirect()->back()->with('error', 'Sorry, there\'re a problem while updating the location.');
+        }
+        return redirect()->route('location.index')->with('success', 'Success, the location has been updated.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Location  $location
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Location $location)
+    {
+        $location->delete();
+        return response()->json([
+            'success' => true
+        ]);
+        // return redirect()->route('location.index')->with('success', 'Success, your location has been deleted.');
+        // return back();
+        // return redirect()->back()->with('success', 'Success, your location has been deleted.');
+        // return view('location.index')->with('success', 'Success, your location has been deleted.');
     }
 }

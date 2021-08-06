@@ -111,7 +111,6 @@ class DepartmentController extends Controller
         return redirect()->route('department.index')->with('success', 'Success, your department has been updated.');
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
