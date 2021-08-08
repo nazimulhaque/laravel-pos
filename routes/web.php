@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PrinterGroupController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SettingController;
@@ -25,6 +26,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('department', DepartmentController::class);
     Route::resource('location', LocationController::class);
     Route::resource('unit', UnitController::class);
+    Route::resource('printer_group', PrinterGroupController::class);
     Route::resource('products', ProductController::class);
     Route::resource('customers', CustomerController::class);
     Route::resource('orders', OrderController::class);

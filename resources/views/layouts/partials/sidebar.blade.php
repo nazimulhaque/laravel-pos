@@ -56,6 +56,12 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{ route('printer_group.index') }}" class="nav-link {{ activeSegment('printer_group') }}">
+                        <i class="nav-icon fas fa-th-large"></i>
+                        <p>Printer Groups</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="{{ route('cart.index') }}" class="nav-link {{ activeSegment('cart') }}">
                         <i class="nav-icon fas fa-cart-plus"></i>
                         <p>Open POS</p>
