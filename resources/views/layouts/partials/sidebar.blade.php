@@ -30,24 +30,34 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="nav-icon fas fa-th-large"></i>
-                        <p>Products</p>
+                        <p>Manage Products</p>
                     </a>
                     <div class="dropdown-menu">
-                        <a href="{{ route('products.index') }}" class="nav-link {{ activeSegment('products') }}">
-                            <i class="nav-icon fas fa-th-large"></i>
-                            <p>Manage Products</p>
-                        </a>
                         <a href="{{ route('department.index') }}" class="nav-link {{ activeSegment('department') }}">
                             <i class="nav-icon fas fa-th-large"></i>
-                            <p>Manage Departments</p>
+                            <p>Departments</p>
+                        </a>
+                        <a href="{{ route('products.index') }}" class="nav-link {{ activeSegment('products') }}">
+                            <i class="nav-icon fas fa-th-large"></i>
+                            <p>Products</p>
                         </a>
                     </div>
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="nav-icon fas fa-th-large"></i>
-                        <p>Locations</p>
+                        <p>Manage Locations</p>
                     </a>
+                    <div class="dropdown-menu">
+                        <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
+                            <i class="nav-icon fas fa-th-large"></i>
+                            <p>Locations</p>
+                        </a>
+                        <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
+                            <i class="nav-icon fas fa-th-large"></i>
+                            <p>Location Tables</p>
+                        </a>
+                    </div>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('unit.index') }}" class="nav-link {{ activeSegment('units') }}">

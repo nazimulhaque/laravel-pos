@@ -22,6 +22,16 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="number_of_tables">No. of Tables</label>
+                <input type="text" name="number_of_tables" class="form-control @error('number_of_tables') is-invalid @enderror" id="number_of_tables" placeholder="No. of Tables" value="{{ old('number_of_tables', $location->number_of_tables) }}">
+                @error('quantity')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
             <button class="btn btn-primary" type="submit">Update</button>
         </form>
     </div>

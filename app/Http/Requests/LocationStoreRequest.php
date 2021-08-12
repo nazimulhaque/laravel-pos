@@ -25,6 +25,7 @@ class LocationStoreRequest extends FormRequest
     {
         return [
             'location_name' => 'required|string|max:100',
+            'number_of_tables' => 'required|numeric|min:0',
         ];
     }
 }

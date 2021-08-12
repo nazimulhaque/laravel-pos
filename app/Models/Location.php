@@ -48,6 +48,7 @@ class Location extends Model
     const UPDATED_AT = 'last_modified_date';
 
     protected $fillable = [
-        'location_name'
+        'location_name',
+        'number_of_tables'
     ];
 }

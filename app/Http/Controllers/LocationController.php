@@ -48,7 +48,8 @@ class LocationController extends Controller
     public function store(LocationStoreRequest $request)
     {
         $location = Location::create([
-            'location_name' => $request->location_name
+            'location_name' => $request->location_name,
+            'number_of_tables' => $request->number_of_tables
         ]);
 
         if (!$location) {
@@ -90,6 +91,7 @@ class LocationController extends Controller
     public function update(LocationUpdateRequest $request, Location $location)
     {
         $location->location_name = $request->location_name;
+        $location->number_of_tables = $request->number_of_tables;
 
         if (!$location->save()) {
             return redirect()->back()->with('error', 'Sorry, there\'re a problem while updating the location.');

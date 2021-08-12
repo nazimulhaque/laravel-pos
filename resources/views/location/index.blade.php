@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>No. of Tables</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -22,6 +23,7 @@
                 @foreach ($locations as $location)
                 <tr>
                     <td>{{$location->location_name}}</td>
+                    <td>{{$location->number_of_tables}}</td>
                     <td>
                         <a href="{{ route('location.edit', $location) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <button class="btn btn-danger btn-delete" data-url="{{route('location.destroy', $location)}}"><i class="fas fa-trash"></i></button>
