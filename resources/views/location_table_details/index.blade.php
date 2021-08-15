@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'Location List')
-@section('content-header', 'Location List')
+@section('title', 'Location Table List')
+@section('content-header', 'Location Table List')
 @section('content-actions')
-<a href="{{route('location.create')}}" class="btn btn-primary">Add Location</a>
+<a href="{{route('location_table_details.create')}}" class="btn btn-primary">Add Location Details</a>
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
@@ -14,25 +14,30 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Location</th>
                     <th>No. of Tables</th>
-                    <th>Actions</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Area</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($locations as $location)
+                @foreach ($location_table_details as $tables)
                 <tr>
-                    <td>{{$location->location_name}}</td>
-                    <td>{{$location->number_of_tables}}</td>
+                    <td>{{$location_list->firstWhere('location_id', $tables->location_id)->location_name}}</td>
+                    <td>{{$location_list->firstWhere('location_id', $tables->location_id)->number_of_tables}}</td>
+                    <td>{{$tables->start_number}}</td>
+                    <td>{{$tables->end_number}}</td>
+                    <td>{{$tables->area}}</td>
                     <td>
-                        <a href="{{ route('location.edit', $location) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger btn-delete" data-url="{{route('location.destroy', $location)}}"><i class="fas fa-trash"></i></button>
+                        <a href="{{ route('location_table_details.edit', $tables) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger btn-delete" data-url="{{route('location_table_details.destroy', $tables)}}"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{ $locations->render() }}
+        {{ $location_table_details->render() }}
     </div>
 </div>
 @endsection
@@ -53,7 +58,7 @@
 
             swalWithBootstrapButtons.fire({
                 title: 'Are you sure?',
-                text: "Do you really want to delete this location and all associated tables?",
+                text: "Do you really want to delete this location details?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes',

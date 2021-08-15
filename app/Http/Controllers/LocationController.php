@@ -21,7 +21,8 @@ class LocationController extends Controller
         if ($request->search) {
             $locations = $locations->where('location_name', 'LIKE', "%{$request->search}%");
         }
-        $locations = $locations->latest()->paginate(10);
+        // $locations = $locations->latest()->paginate(10);
+        $locations = $locations->orderBy('location_name')->paginate(10);
         if (request()->wantsJson()) {
             return LocationResource::collection($locations);
         }

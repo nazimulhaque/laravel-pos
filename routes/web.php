@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\LocationTableDetailsController;
 use App\Http\Controllers\PrinterGroupController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
@@ -25,6 +26,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
     Route::resource('department', DepartmentController::class);
     Route::resource('location', LocationController::class);
+    Route::resource('location_table_details', LocationTableDetailsController::class);
     Route::resource('unit', UnitController::class);
     Route::resource('printer_group', PrinterGroupController::class);
     Route::resource('products', ProductController::class);

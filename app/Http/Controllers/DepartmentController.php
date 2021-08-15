@@ -23,14 +23,15 @@ class DepartmentController extends Controller
         if ($request->search) {
             $departments = $departments->where('department_name', 'LIKE', "%{$request->search}%");
         }
-        $departments = $departments->latest()->paginate(10);
-        $departmentList = Department::select('department_id', 'parent_department_id', 'department_name')->get();
+        // $departments = $departments->latest()->paginate(10);
+        $departments = $departments->orderBy('department_name')->paginate(10);
+        $department_list = Department::select('department_id', 'parent_department_id', 'department_name')->orderBy('department_name')->get();
         if (request()->wantsJson()) {
             return DepartmentResource::collection($departments);
         }
         return view('department.index')
             ->with('departments', $departments)
-            ->with(compact('departmentList'));
+            ->with(compact('department_list'));
     }
 
     /**
@@ -40,10 +41,10 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        $departmentList = Department::select('department_id', 'parent_department_id', 'department_name')->get();
-        // return $departmentList;
+        $department_list = Department::select('department_id', 'parent_department_id', 'department_name')->orderBy('department_name')->get();
+        // return $department_list;
         return view('department.create')
-            ->with(compact('departmentList'));
+            ->with(compact('department_list'));
     }
 
     /**
@@ -86,10 +87,10 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        $departmentList = Department::select('department_id', 'parent_department_id', 'department_name')->get();
+        $department_list = Department::select('department_id', 'parent_department_id', 'department_name')->orderBy('department_name')->get();
         return view('department.edit')
             ->with('department', $department)
-            ->with(compact('departmentList'));
+            ->with(compact('department_list'));
     }
 
     /**

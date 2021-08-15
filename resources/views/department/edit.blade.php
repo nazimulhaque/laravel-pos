@@ -26,7 +26,7 @@
                 <label for="parent_department_id">Parent Department</label>
                 <select name="parent_department_id" class="form-control @error('parent_department_id') is-invalid @enderror" id="parent_department_id">
                     <option value="" selected>Select</option>
-                    @foreach($departmentList->sortBy('department_name') as $dept)
+                    @foreach($department_list as $dept)
                     <option value="{{$dept->department_id}}" {{$dept->department_id == $department->parent_department_id ? 'selected' : ''}} {{$dept->department_id == $department->department_id ? 'disabled' : ''}} {{$dept->parent_department_id > 0 ? 'hidden' : ''}}>
                         {{$dept->department_name}}
                     </option>

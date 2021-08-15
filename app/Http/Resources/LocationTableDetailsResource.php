@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
 
-class DepartmentResource extends JsonResource
+class LocationTableDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,11 @@ class DepartmentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'department_id' => $this->department_id,
-            'department_name' => $this->department_name,
-            'parent_department_id' => $this->parent_department_id,
-            'description' => $this->description,
+            'location_table_detail_id' => $this->location_table_detail_id,
+            'location_id' => $this->location_id,
+            'start_number' => $this->start_number,
+            'end_number' => $this->end_number,
+            'area' => $this->description,
             'created_by' => $this->created_by,
             'created_date' => $this->created_date,
             'last_modified_by' => $this->last_modified_by,

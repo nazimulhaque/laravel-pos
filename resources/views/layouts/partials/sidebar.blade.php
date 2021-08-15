@@ -30,7 +30,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="nav-icon fas fa-th-large"></i>
-                        <p>Manage Products</p>
+                        <p>Products</p>
                     </a>
                     <div class="dropdown-menu">
                         <a href="{{ route('department.index') }}" class="nav-link {{ activeSegment('department') }}">
@@ -46,14 +46,14 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="nav-icon fas fa-th-large"></i>
-                        <p>Manage Locations</p>
+                        <p>Locations</p>
                     </a>
                     <div class="dropdown-menu">
                         <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
                             <i class="nav-icon fas fa-th-large"></i>
                             <p>Locations</p>
                         </a>
-                        <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
+                        <a href="{{ route('location_table_details.index') }}" class="nav-link {{ activeSegment('location_table_details') }}">
                             <i class="nav-icon fas fa-th-large"></i>
                             <p>Location Tables</p>
                         </a>

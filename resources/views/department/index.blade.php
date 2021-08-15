@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{$department->department_name}}</td>
                     <td>{{$department->description}}</td>
-                    <td>{{$department->parent_department_id > 0 ? $departmentList->firstWhere('department_id', $department->parent_department_id)->department_name : ""}}</td>
+                    <td>{{$department->parent_department_id > 0 ? $department_list->firstWhere('department_id', $department->parent_department_id)->department_name : ""}}</td>
                     <td>
                         <a href="{{ route('department.edit', $department) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <button class="btn btn-danger btn-delete" data-url="{{route('department.destroy', $department)}}"><i class="fas fa-trash"></i></button>
