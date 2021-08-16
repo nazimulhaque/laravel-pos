@@ -3,7 +3,7 @@
 @section('title', 'Location Table List')
 @section('content-header', 'Location Table List')
 @section('content-actions')
-<a href="{{route('location_table_details.create')}}" class="btn btn-primary">Add Location Details</a>
+<a href="{{route('location_table_details.create')}}" class="btn btn-primary">Add Location Tables</a>
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
@@ -19,6 +19,7 @@
                     <th>From</th>
                     <th>To</th>
                     <th>Area</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
