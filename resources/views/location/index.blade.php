@@ -25,6 +25,7 @@
                     <td>{{$location->location_name}}</td>
                     <td>{{$location->number_of_tables}}</td>
                     <td>
+                        <a href="{{ route('location.show', $location) }}" class="btn btn-primary"><i class="fas fa-info"></i></a>
                         <a href="{{ route('location.edit', $location) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                         <button class="btn btn-danger btn-delete" data-url="{{route('location.destroy', $location)}}"><i class="fas fa-trash"></i></button>
                     </td>

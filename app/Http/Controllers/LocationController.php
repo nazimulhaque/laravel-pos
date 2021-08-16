@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\LocationResource;
 use App\Models\Location;
+use App\Models\LocationTableDetails;
 use Illuminate\Http\Request;
 use App\Http\Requests\LocationStoreRequest;
 use App\Http\Requests\LocationUpdateRequest;
@@ -67,7 +68,12 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
+        $location_list = Location::select('location_id', 'location_name', 'number_of_tables')->orderBy('location_name')->get();
+        $location_table_details = LocationTableDetails::select('location_table_detail_id', 'location_id', 'start_number', 'end_number', 'area')->orderBy('start_number')->get();
+        return view('location.show')
+            ->with('location', $location)
+            ->with(compact('location_list'))
+            ->with(compact('location_table_details'));
     }
 
     /**

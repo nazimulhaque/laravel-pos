@@ -23,63 +23,63 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
                     <a href="{{route('home')}}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-tv"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="nav-icon fas fa-th-large"></i>
+                        <i class="nav-icon fas fa-list-ul"></i>
                         <p>Products</p>
                     </a>
                     <div class="dropdown-menu">
                         <a href="{{ route('department.index') }}" class="nav-link {{ activeSegment('department') }}">
-                            <i class="nav-icon fas fa-th-large"></i>
+                            <i class="nav-icon fas fa-stream"></i>
                             <p>Departments</p>
                         </a>
                         <a href="{{ route('products.index') }}" class="nav-link {{ activeSegment('products') }}">
-                            <i class="nav-icon fas fa-th-large"></i>
+                            <i class="nav-icon fas fa-dice-d6"></i>
                             <p>Products</p>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="nav-icon fas fa-th-large"></i>
+                        <i class="nav-icon fas fa-list-ul"></i>
                         <p>Locations</p>
                     </a>
                     <div class="dropdown-menu">
                         <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
-                            <i class="nav-icon fas fa-th-large"></i>
+                            <i class="nav-icon fas fa-location-arrow"></i>
                             <p>Locations</p>
                         </a>
                         <a href="{{ route('location_table_details.index') }}" class="nav-link {{ activeSegment('location_table_details') }}">
-                            <i class="nav-icon fas fa-th-large"></i>
+                            <i class="nav-icon fa fa-table"></i>
                             <p>Location Tables</p>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('unit.index') }}" class="nav-link {{ activeSegment('units') }}">
-                        <i class="nav-icon fas fa-th-large"></i>
-                        <p>Units</p>
-                    </a>
-                </li>
-                <li class="nav-item has-treeview">
                     <a href="{{ route('tax.index') }}" class="nav-link {{ activeSegment('taxes') }}">
-                        <i class="nav-icon fas fa-th-large"></i>
+                        <i class="nav-icon fas fa-percent"></i>
                         <p>Tax</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{ route('unit.index') }}" class="nav-link {{ activeSegment('units') }}">
+                        <i class="nav-icon fas fa-balance-scale"></i>
+                        <p>Units</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="{{ route('printer_group.index') }}" class="nav-link {{ activeSegment('printer_group') }}">
-                        <i class="nav-icon fas fa-th-large"></i>
+                        <i class="nav-icon fas fa-print"></i>
                         <p>Printer Groups</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('cart.index') }}" class="nav-link {{ activeSegment('cart') }}">
-                        <i class="nav-icon fas fa-cart-plus"></i>
+                        <i class="nav-icon fas fa-barcode"></i>
                         <p>Open POS</p>
                     </a>
                 </li>
