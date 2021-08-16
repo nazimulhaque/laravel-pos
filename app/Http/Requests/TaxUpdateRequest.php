@@ -25,7 +25,7 @@ class TaxUpdateRequest extends FormRequest
     {
         return [
             'description' => 'nullable|string|max:255',
-            'rate' => 'required|numeric'
+            'rate' => 'required|numeric|between:0.01,99.99',
         ];
     }
 }
