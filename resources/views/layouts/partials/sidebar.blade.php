@@ -66,6 +66,12 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{ route('tax.index') }}" class="nav-link {{ activeSegment('taxes') }}">
+                        <i class="nav-icon fas fa-th-large"></i>
+                        <p>Tax</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="{{ route('printer_group.index') }}" class="nav-link {{ activeSegment('printer_group') }}">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p>Printer Groups</p>

@@ -9,6 +9,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LocationTableDetailsController;
 use App\Http\Controllers\PrinterGroupController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TaxController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('department', DepartmentController::class);
     Route::resource('location', LocationController::class);
     Route::resource('location_table_details', LocationTableDetailsController::class);
+    Route::resource('tax', TaxController::class);
     Route::resource('unit', UnitController::class);
     Route::resource('printer_group', PrinterGroupController::class);
     Route::resource('products', ProductController::class);
