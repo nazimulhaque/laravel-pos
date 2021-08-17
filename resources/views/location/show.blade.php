@@ -70,6 +70,8 @@
                     @enderror
                 </div>
 
+                <input type="hidden" id="from_route" name="from_route" value="location">
+
                 <button class="btn btn-primary" type="submit">Add</button>
             </div>
         </form>

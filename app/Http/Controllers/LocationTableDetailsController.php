@@ -66,6 +66,18 @@ class LocationTableDetailsController extends Controller
         if (!$location_table_details) {
             return redirect()->back()->with('error', 'Sorry, there was a problem while adding location table details.');
         }
+
+        if ($request->from_route == 'location') {
+            $location = Location::select('location_id', 'location_name', 'number_of_tables')->where('location_id', $request->location_id)->get();
+            $location_list = Location::select('location_id', 'location_name', 'number_of_tables')->orderBy('location_name')->get();
+            $location_table_details = LocationTableDetails::select('location_table_detail_id', 'location_id', 'start_number', 'end_number', 'area')->orderBy('start_number')->get();
+            return view('location.show')
+                ->with('success', 'Success, location table details has been added.')
+                ->with('location', $location)
+                ->with(compact('location_list'))
+                ->with(compact('location_table_details'));
+        }
+
         return redirect()->route('location_table_details.index')->with('success', 'Success, location table details has been added.');
     }
 
