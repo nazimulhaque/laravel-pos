@@ -36,42 +36,36 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary" type="button" id="btn_expand" onclick="toggleDivVisibility()">Add Location Tables</button>
+                <label for="area">Area</label>
+                <input type="text" name="area" class="form-control @error('area') is-invalid @enderror" id="area" placeholder="Area" value="{{ old('area') }}">
+                @error('area')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
 
-            <div class="form-group" id="location_tables_card_main" style="display: none;">
-                <div class="form-group">
-                    <label for="area">Area</label>
-                    <input type="text" name="area" class="form-control @error('area') is-invalid @enderror" id="area" placeholder="Area" value="{{ old('area') }}">
-                    @error('area')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="start_number">From</label>
-                    <input type="number" min="1" name="start_number" class="form-control @error('start_number') is-invalid @enderror" id="start_number" placeholder="From" value="{{ old('start_number') }}">
-                    @error('start_number')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="end_number">To</label>
-                    <input type="number" min="1" name="end_number" class="form-control @error('end_number') is-invalid @enderror" id="end_number" placeholder="To" value="{{ old('end_number') }}">
-                    @error('end_number')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <button class="btn btn-primary" type="submit">Add</button>
+            <div class="form-group">
+                <label for="start_number">From</label>
+                <input type="number" min="1" name="start_number" class="form-control @error('start_number') is-invalid @enderror" id="start_number" placeholder="From" value="{{ old('start_number') }}">
+                @error('start_number')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
+
+            <div class="form-group">
+                <label for="end_number">To</label>
+                <input type="number" min="1" name="end_number" class="form-control @error('end_number') is-invalid @enderror" id="end_number" placeholder="To" value="{{ old('end_number') }}">
+                @error('end_number')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+            <button class="btn btn-primary" type="submit">Add</button>
         </form>
     </div>
 </div>
@@ -180,15 +174,6 @@
         var element = document.createElement("b");
         element.innerHTML = text;
         return element;
-    }
-
-    function toggleDivVisibility() {
-        var x = document.getElementById("location_tables_card_main");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
     }
 </script>
 

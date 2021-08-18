@@ -23,22 +23,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($location_table_details as $tables)
+                @foreach ($location_table_details_list as $location_table_details)
                 <tr>
-                    <td>{{$location_list->firstWhere('location_id', $tables->location_id)->location_name}}</td>
-                    <td>{{$location_list->firstWhere('location_id', $tables->location_id)->number_of_tables}}</td>
-                    <td>{{$tables->start_number}}</td>
-                    <td>{{$tables->end_number}}</td>
-                    <td>{{$tables->area}}</td>
+                    <td>{{$location_list->firstWhere('location_id', $location_table_details->location_id)->location_name}}</td>
+                    <td>{{$location_list->firstWhere('location_id', $location_table_details->location_id)->number_of_tables}}</td>
+                    <td>{{$location_table_details->start_number}}</td>
+                    <td>{{$location_table_details->end_number}}</td>
+                    <td>{{$location_table_details->area}}</td>
                     <td>
-                        <a href="{{ route('location_table_details.edit', $tables) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger btn-delete" data-url="{{route('location_table_details.destroy', $tables)}}"><i class="fas fa-trash"></i></button>
+                        <a href="{{ route('location_table_details.edit', $location_table_details->location_table_detail_id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger btn-delete" data-url="{{route('location_table_details.destroy', $location_table_details->location_table_detail_id)}}"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{ $location_table_details->render() }}
+        {{ $location_table_details_list->render() }}
     </div>
 </div>
 @endsection

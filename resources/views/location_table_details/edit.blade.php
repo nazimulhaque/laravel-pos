@@ -1,21 +1,22 @@
 @extends('layouts.admin')
 
-@section('title', 'Location Details')
-@section('content-header', 'Location Details')
+@section('title', 'Edit Location Table Details')
+@section('content-header', 'Edit Location Table Details')
 
 @section('content')
 
 <div class="card">
     <div class="card-body">
 
-        <form action="{{ route('location_table_details.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('location_table_details.update', $location_table_detail_id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
             <div class="form-group">
                 <label for="location_id">Location</label>
                 <select name="location_id" class="form-control @error('location_id') is-invalid @enderror" id="location_id" onchange="getTableDetails(this.value)">
                     @foreach($location_list as $loc)
-                    <option value="{{$loc->location_id}}" {{$loc->location_id == $location->location_id ? 'selected' : ''}}>{{$loc->location_name}}</option>
+                    <option value="{{$loc->location_id}}" {{$loc->location_id == $location_table_details->location_id ? 'selected' : ''}}>{{$loc->location_name}}</option>
                     @endforeach
                 </select>
                 @error('location_id')
@@ -36,45 +37,36 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary" type="button" id="btn_expand" onclick="toggleDivVisibility()">Add Location Tables</button>
+                <label for="area">Area</label>
+                <input type="text" name="area" class="form-control @error('area') is-invalid @enderror" id="area" placeholder="Area" value="{{ old('area', $location_table_details->area) }}">
+                @error('area')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
 
-            <div class="form-group" id="location_tables_card_main" style="display: none;">
-                <div class="form-group">
-                    <label for="area">Area</label>
-                    <input type="text" name="area" class="form-control @error('area') is-invalid @enderror" id="area" placeholder="Area" value="{{ old('area') }}">
-                    @error('area')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="start_number">From</label>
-                    <input type="number" min="1" name="start_number" class="form-control @error('start_number') is-invalid @enderror" id="start_number" placeholder="From" value="{{ old('start_number') }}">
-                    @error('start_number')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="end_number">To</label>
-                    <input type="number" min="1" name="end_number" class="form-control @error('end_number') is-invalid @enderror" id="end_number" placeholder="To" value="{{ old('end_number') }}">
-                    @error('end_number')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <!-- Hidden element to pass the origination route name -->
-                <input type="hidden" id="from_route" name="from_route" value="location">
-
-                <button class="btn btn-primary" type="submit">Add</button>
+            <div class="form-group">
+                <label for="start_number">From</label>
+                <input type="number" min="1" name="start_number" class="form-control @error('start_number') is-invalid @enderror" id="start_number" placeholder="From" value="{{ old('start_number', $location_table_details->start_number) }}">
+                @error('start_number')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
+
+            <div class="form-group">
+                <label for="end_number">To</label>
+                <input type="number" min="1" name="end_number" class="form-control @error('end_number') is-invalid @enderror" id="end_number" placeholder="To" value="{{ old('end_number', $location_table_details->end_number) }}">
+                @error('end_number')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+            <button class="btn btn-primary" type="submit">Update</button>
         </form>
     </div>
 </div>
@@ -87,8 +79,8 @@
         bsCustomFileInput.init();
 
         // Retrieve location ID
-        var location = <?php echo json_encode($location); ?>;
-        getTableDetails(location["location_id"]);
+        var location_id = <?php echo $location_id; ?>;
+        getTableDetails(location_id);
     });
 
     function getTableDetails(locationId) {
@@ -104,7 +96,7 @@
         }
 
         // Retrieve data and create table to display location details
-        var locationTables = <?php echo json_encode($location_table_details); ?>;
+        var locationTables = <?php echo json_encode($location_table_details_list); ?>;
 
         // Display heading
         var table = document.createElement('table');
@@ -120,22 +112,18 @@
                     var td1 = document.createElement('td');
                     var td2 = document.createElement('td');
                     var td3 = document.createElement('td');
-                    var td4 = document.createElement('td');
 
                     var text1 = document.createTextNode('Area');
                     var text2 = document.createTextNode('From');
                     var text3 = document.createTextNode('To');
-                    var text4 = document.createTextNode('Actions');
 
                     td1.appendChild(boldHTML("Area"));
                     td2.appendChild(boldHTML("From"));
                     td3.appendChild(boldHTML("To"));
-                    td4.appendChild(boldHTML("Actions"));
 
                     tr.appendChild(td1);
                     tr.appendChild(td2);
                     tr.appendChild(td3);
-                    tr.appendChild(td4);
 
                     thead.appendChild(tr);
                     table.appendChild(thead);
@@ -161,24 +149,18 @@
                     var td1 = document.createElement('td');
                     var td2 = document.createElement('td');
                     var td3 = document.createElement('td');
-                    var td4 = document.createElement('td');
 
                     var text1 = document.createTextNode(locationTables[key]["area"]);
                     var text2 = document.createTextNode(locationTables[key]["start_number"]);
                     var text3 = document.createTextNode(locationTables[key]["end_number"]);
-                    // Create action buttons
-                    var button = document.createElement('button');
-                    button.className = 'btn btn-danger btn-delete';
 
                     td1.appendChild(text1);
                     td2.appendChild(text2);
                     td3.appendChild(text3);
-                    td4.appendChild(createElementFromHTML('<button class="btn btn-danger btn-delete" data-url="{{route("location_table_details.destroy", 5)}}"><i class="fas fa-trash"></i></button>'));
 
                     tr.appendChild(td1);
                     tr.appendChild(td2);
                     tr.appendChild(td3);
-                    tr.appendChild(td4);
 
                     tbody.appendChild(tr);
                 }
@@ -195,23 +177,6 @@
         var element = document.createElement("b");
         element.innerHTML = text;
         return element;
-    }
-
-    function toggleDivVisibility() {
-        var x = document.getElementById("location_tables_card_main");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-    function createElementFromHTML(htmlString) {
-        var div = document.createElement('div');
-        div.innerHTML = htmlString.trim();
-
-        // Change this to div.childNodes to support multiple top-level nodes
-        return div.firstChild;
     }
 </script>
 
