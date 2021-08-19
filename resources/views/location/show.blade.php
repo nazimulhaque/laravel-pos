@@ -171,8 +171,11 @@
                     iconEdit.setAttribute("class", "fas fa-edit");
                     var anchor = document.createElement("a");
                     anchor.setAttribute("class", "btn btn-primary")
-                    anchor.setAttribute("href", "route('location_table_details.edit', " + locationTables[key]["location_table_detail_id"] + ")");
+                    // anchor.setAttribute("href", "route('location_table_details.edit', " + locationTables[key]["location_table_detail_id"] + ")");
                     // a.href = "route('location_table_details.edit', " + locationTables[key]["location_table_detail_id"] + ")";
+                    var url = '{{ route("location_table_details.edit", ":slug") }}';
+                    url = url.replace(':slug', locationTables[key]["location_table_detail_id"]);
+                    anchor.href = url;
                     anchor.appendChild(iconEdit);
                     td4.appendChild(anchor);
 
