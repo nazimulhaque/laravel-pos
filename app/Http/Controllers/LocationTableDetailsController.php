@@ -67,8 +67,7 @@ class LocationTableDetailsController extends Controller
             return redirect()->back()->with('error', 'Sorry, there was a problem while adding location table details.');
         }
 
-        // if ($request->from_route == 'location') {
-        if (true) {
+        if ($request->from_route == 'location') {
             // REMEMBER: The below line returns ALL locations (a COLLECTION) in the table.
             $location = new Location();
             // echo $location->count();
@@ -89,7 +88,7 @@ class LocationTableDetailsController extends Controller
                 ->with(compact('location_table_details'));
         }
 
-        // return redirect()->route('location_table_details.index')->with('success', 'Success, location table details has been added.');
+        return redirect()->route('location_table_details.index')->with('success', 'Success, location table details has been added.');
     }
 
     /**
@@ -136,7 +135,7 @@ class LocationTableDetailsController extends Controller
         $location_table_details->area = $request->area;
         $location_table_details->start_number = $request->start_number;
         $location_table_details->end_number = $request->end_number;
-        
+
         if (!$location_table_details->save()) {
             return redirect()->back()->with('error', 'Sorry, there\'re a problem while updating the location table details.');
         }

@@ -122,11 +122,6 @@
                     var td3 = document.createElement('td');
                     var td4 = document.createElement('td');
 
-                    var text1 = document.createTextNode('Area');
-                    var text2 = document.createTextNode('From');
-                    var text3 = document.createTextNode('To');
-                    var text4 = document.createTextNode('Actions');
-
                     td1.appendChild(boldHTML("Area"));
                     td2.appendChild(boldHTML("From"));
                     td3.appendChild(boldHTML("To"));
@@ -166,14 +161,28 @@
                     var text1 = document.createTextNode(locationTables[key]["area"]);
                     var text2 = document.createTextNode(locationTables[key]["start_number"]);
                     var text3 = document.createTextNode(locationTables[key]["end_number"]);
-                    // Create action buttons
-                    var button = document.createElement('button');
-                    button.className = 'btn btn-danger btn-delete';
 
                     td1.appendChild(text1);
                     td2.appendChild(text2);
                     td3.appendChild(text3);
-                    td4.appendChild(createElementFromHTML('<button class="btn btn-danger btn-delete" data-url="{{route("location_table_details.destroy", 5)}}"><i class="fas fa-trash"></i></button>'));
+
+                    // Create action buttons
+                    var iconEdit = document.createElement("i");
+                    iconEdit.setAttribute("class", "fas fa-edit");
+                    var anchor = document.createElement("a");
+                    anchor.setAttribute("class", "btn btn-primary")
+                    anchor.setAttribute("href", "route('location_table_details.edit', " + locationTables[key]["location_table_detail_id"] + ")");
+                    // a.href = "route('location_table_details.edit', " + locationTables[key]["location_table_detail_id"] + ")";
+                    anchor.appendChild(iconEdit);
+                    td4.appendChild(anchor);
+
+                    var iconDelete = document.createElement("i");
+                    iconDelete.setAttribute("class", "fas fa-trash");
+                    var button = document.createElement("button");
+                    button.setAttribute("class", "btn btn-danger btn-delete")
+                    button.setAttribute("data-url", "route('location_table_details.destroy', " + locationTables[key]["location_table_detail_id"] + ")");
+                    button.appendChild(iconDelete);
+                    td4.appendChild(button);
 
                     tr.appendChild(td1);
                     tr.appendChild(td2);

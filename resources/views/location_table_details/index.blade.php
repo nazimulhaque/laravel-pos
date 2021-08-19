@@ -32,7 +32,7 @@
                     <td>{{$location_table_details->area}}</td>
                     <td>
                         <a href="{{ route('location_table_details.edit', $location_table_details->location_table_detail_id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger btn-delete" data-url="{{route('location_table_details.destroy', $location_table_details->location_table_detail_id)}}"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-danger btn-delete" data-url="{{ route('location_table_details.destroy', $location_table_details->location_table_detail_id) }}"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
