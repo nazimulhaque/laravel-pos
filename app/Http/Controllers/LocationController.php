@@ -6,6 +6,7 @@ use App\Http\Resources\LocationResource;
 use App\Models\Location;
 use App\Models\LocationTableDetails;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Requests\LocationStoreRequest;
 use App\Http\Requests\LocationUpdateRequest;
 
@@ -63,17 +64,43 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Location  $location
+     * @param  \App\Models\Location $location
      * @return \Illuminate\Http\Response
      */
-    public function show(Location $location)
+    public function show(int $location_id)
     {
+        $location = Location::find($location_id);
         $location_list = Location::select('location_id', 'location_name', 'number_of_tables')->orderBy('location_name')->get();
-        $location_table_details = LocationTableDetails::select('location_table_detail_id', 'location_id', 'start_number', 'end_number', 'area')->orderBy('start_number')->get();
+        $location_table_details = LocationTableDetails::select('location_table_detail_id', 'location_id', 'start_number', 'end_number', 'area')
+            ->where('location_id', '=', $location_id)
+            ->orderBy('start_number')->get();
         return view('location.show')
             ->with('location', $location)
             ->with(compact('location_list'))
             ->with(compact('location_table_details'));
+    }
+
+    /**
+     * Handle Ajax request.
+     */
+    public function newLocation(Request $request)
+    {
+        $location = Location::find($request->location_id);
+        $location_list = Location::select('location_id', 'location_name', 'number_of_tables')->orderBy('location_name')->get();
+        $location_table_details = LocationTableDetails::select('location_table_detail_id', 'location_id', 'start_number', 'end_number', 'area')
+            ->where('location_id', '=', $request->location_id)
+            ->orderBy('start_number')->get();
+        $location = $location->toArray();
+        $location_list = $location_list->toArray();
+        $location_table_details = $location_table_details->toArray();
+        // echo $location_table_details;
+
+        // return Response::json([
+        return response()->json([
+            'location' => $location,
+            // 'location_list' => $location_list,
+            'location_table_details' => $location_table_details
+        ]);
     }
 
     /**

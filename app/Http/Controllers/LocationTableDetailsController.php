@@ -82,7 +82,7 @@ class LocationTableDetailsController extends Controller
             // $location = Location::select('location_id', 'location_name', 'number_of_tables')->where('location_id', $request->location_id)->get();
             $location_list = Location::select('location_id', 'location_name', 'number_of_tables')->orderBy('location_name')->get();
             $location_table_details = LocationTableDetails::select('location_table_detail_id', 'location_id', 'start_number', 'end_number', 'area')->orderBy('start_number')->get();
-            return redirect()->route('location.show', $location)
+            return redirect()->route('location.show', $request->location_id)
                 ->with('success', 'Success, location table details has been added.')
                 ->with(compact('location_list'))
                 ->with(compact('location_table_details'));
@@ -158,13 +158,6 @@ class LocationTableDetailsController extends Controller
 
     public function destroy(int $location_table_detail_id)
     {
-        /*
-        $test = "Hello";
-        echo '<script>';
-        // echo 'console.log(' . $location_table_details->area . ')';
-        echo 'console.log(' . $test . ')';
-        echo '</script>';
-*/
         // $location_table_details->delete();
         LocationTableDetails::destroy($location_table_detail_id);
         return response()->json([
