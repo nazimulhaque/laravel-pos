@@ -70,15 +70,21 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('tax.index') }}" class="nav-link {{ activeSegment('taxes') }}">
+                    <a href="{{ route('tax.index') }}" class="nav-link {{ activeSegment('tax') }}">
                         <i class="nav-icon fas fa-percent"></i>
                         <p>Tax</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('unit.index') }}" class="nav-link {{ activeSegment('units') }}">
+                    <a href="{{ route('unit.index') }}" class="nav-link {{ activeSegment('unit') }}">
                         <i class="nav-icon fas fa-balance-scale"></i>
                         <p>Units</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('modifiers_category.index') }}" class="nav-link {{ activeSegment('modifiers_categories') }}">
+                        <i class="nav-icon fas fa-hamburger"></i>
+                        <p>Modifiers Category</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">

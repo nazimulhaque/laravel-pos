@@ -11,6 +11,7 @@ use App\Http\Controllers\PrinterGroupController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\ModifiersCategoryController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('location_table_details', LocationTableDetailsController::class);
     Route::resource('tax', TaxController::class);
     Route::resource('unit', UnitController::class);
+    Route::resource('modifiers_category', ModifiersCategoryController::class);
     Route::resource('printer_group', PrinterGroupController::class);
     Route::resource('products', ProductController::class);
     Route::resource('customers', CustomerController::class);
