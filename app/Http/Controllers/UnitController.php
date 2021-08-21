@@ -18,15 +18,28 @@ class UnitController extends Controller
     public function index(Request $request)
     {
         $units = new Unit();
-        if ($request->search) {
-            $units = $units->where('description', 'LIKE', "%{$request->search}%");
-        }
-        $units = $units->latest()->paginate(10);
+        // $units = $units->latest()->paginate(10);
+        $units = $units->orderBy('description')->paginate(10);
         if (request()->wantsJson()) {
             return UnitResource::collection($units);
         }
         return view('unit.index')
             ->with('units', $units);
+    }
+
+    /**
+     * Search result.
+     */
+    public function search(Request $request)
+    {
+        $units = new Unit();
+        if ($request->filled('search')) {
+            $units = $units->where('description', 'LIKE', "%{$request->search}%")->orderBy('description')->paginate(10);
+            // return redirect()->route('unit.index')->with('units', $units);
+        }
+        return view('unit.index')
+            ->with('units', $units)
+            ->with('search', $request->search);
     }
 
     /**

@@ -44,7 +44,7 @@
                     </div>
                 </li>
 
-                <!--
+                {{--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="nav-icon fas fa-list-ul"></i>
@@ -61,8 +61,8 @@
                         </a>
                     </div>
                 </li>
-                -->
-
+                --}}
+                
                 <li class="nav-item has-treeview">
                     <a href="{{ route('location.index') }}" class="nav-link {{ activeSegment('location') }}">
                         <i class="nav-icon fas fa-location-arrow"></i>

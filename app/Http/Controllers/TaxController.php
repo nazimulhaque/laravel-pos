@@ -30,6 +30,21 @@ class TaxController extends Controller
     }
 
     /**
+     * Search result.
+     */
+    public function search(Request $request)
+    {
+        $units = new Tax();
+        if ($request->filled('search')) {
+            $units = $units->where('description', 'LIKE', "%{$request->search}%")->orderBy('description')->paginate(10);
+            // return redirect()->route('unit.index')->with('units', $units);
+        }
+        return view('tax.index')
+            ->with('taxes', $units)
+            ->with('search', $request->search);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

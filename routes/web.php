@@ -44,4 +44,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::delete('/cart/empty', [CartController::class, 'empty']);
 
     Route::get('/new_location', [LocationController::class, 'newLocation'])->name('location.new_location');
+
+    // Routes for search
+    Route::get('/search_unit', [UnitController::class, 'search'])->name('unit.search');
+    Route::get('/search_tax', [TaxController::class, 'search'])->name('tax.search');
 });
