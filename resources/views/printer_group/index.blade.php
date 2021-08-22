@@ -14,25 +14,25 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Type</th>
                     <th>Name</th>
-                    <th>Print Order</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($printerGroups as $printerGroup)
+                @foreach ($printer_groups as $printer_group)
                 <tr>
-                    <td>{{$printerGroup->description}}</td>
-                    <td>{{$printerGroup->client_print_order}}</td>
+                    <td>{{$printer_group->type}}</td>
+                    <td>{{$printer_group->description}}</td>
                     <td>
-                        <a href="{{ route('printer_group.edit', $printerGroup) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger btn-delete" data-url="{{route('printer_group.destroy', $printerGroup)}}"><i class="fas fa-trash"></i></button>
+                        <a href="{{ route('printer_group.edit', $printer_group) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger btn-delete" data-url="{{route('printer_group.destroy', $printer_group)}}"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{ $printerGroups->render() }}
+        {{ $printer_groups->render() }}
     </div>
 </div>
 @endsection
@@ -53,7 +53,7 @@
 
             swalWithBootstrapButtons.fire({
                 title: 'Are you sure?',
-                text: "Do you really want to delete this printer group?",
+                text: "Do you really want to delete this Printer Group?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes',

@@ -17,14 +17,14 @@ class PrinterGroupResource extends JsonResource
     {
         return [
             'printer_group_id' => $this->printer_group_id,
-            'description' => $this->description,
-            'client_print_order' => $this->client_print_order,
             'type' => $this->type,
+            'description' => $this->description,
             'created_by' => $this->created_by,
             'created_date' => $this->created_date,
             'last_modified_by' => $this->last_modified_by,
             'last_modified_date' => $this->last_modified_date,
             'record_status' => $this->record_status,
+            'client_print_order' => $this->client_print_order
         ];
     }
 }
