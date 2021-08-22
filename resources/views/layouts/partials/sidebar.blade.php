@@ -87,6 +87,13 @@
                         <p>Modifiers Category</p>
                     </a>
                 </li>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('price_level.index') }}" class="nav-link {{ activeSegment('price_levels') }}">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>Price Level</p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('printer_group.index') }}" class="nav-link {{ activeSegment('printer_group') }}">
                         <i class="nav-icon fas fa-print"></i>
