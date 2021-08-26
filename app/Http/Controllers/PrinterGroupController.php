@@ -30,6 +30,21 @@ class PrinterGroupController extends Controller
     }
 
     /**
+     * Search result.
+     */
+    public function search(Request $request)
+    {
+        $printer_groups = new PrinterGroup();
+        if ($request->filled('search')) {
+            $printer_groups = $printer_groups->where('description', 'LIKE', "%{$request->search}%")->orderBy('description')->paginate(10);
+            // return redirect()->route('unit.index')->with('units', $units);
+        }
+        return view('printer_group.index')
+            ->with('printer_groups', $printer_groups)
+            ->with('search', $request->search);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -30,6 +30,21 @@ class PriceLevelController extends Controller
     }
 
     /**
+     * Search result.
+     */
+    public function search(Request $request)
+    {
+        $price_levels = new PriceLevel();
+        if ($request->filled('search')) {
+            $price_levels = $price_levels->where('description', 'LIKE', "%{$request->search}%")->orderBy('description')->paginate(10);
+            // return redirect()->route('unit.index')->with('units', $units);
+        }
+        return view('price_level.index')
+            ->with('price_levels', $price_levels)
+            ->with('search', $request->search);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

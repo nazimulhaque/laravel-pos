@@ -14,6 +14,7 @@ use App\Http\Controllers\TaxController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ModifiersCategoryController;
 use App\Http\Controllers\SettingController;
+use App\Models\ModifiersCategory;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,4 +51,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // Routes for search
     Route::get('/search_unit', [UnitController::class, 'search'])->name('unit.search');
     Route::get('/search_tax', [TaxController::class, 'search'])->name('tax.search');
+    Route::get('/search_printer_group', [PrinterGroupController::class, 'search'])->name('printer_group.search');
+    Route::get('/search_price_level', [PriceLevelController::class, 'search'])->name('price_level.search');
+    Route::get('/search_modifiers_category', [ModifiersCategoryController::class, 'search'])->name('modifiers_category.search');
 });
