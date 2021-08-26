@@ -35,6 +35,22 @@ class DepartmentController extends Controller
     }
 
     /**
+     * Search result.
+     */
+    public function search(Request $request)
+    {
+        $departments = new Department();
+        if ($request->filled('search')) {
+            $departments = $departments->where('department_name', 'LIKE', "%{$request->search}%")->orderBy('department_name')->paginate(10);
+        }
+        $department_list = Department::select('department_id', 'parent_department_id', 'department_name')->orderBy('department_name')->get();
+        return view('department.index')
+            ->with('departments', $departments)
+            ->with('search', $request->search)
+            ->with(compact('department_list'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

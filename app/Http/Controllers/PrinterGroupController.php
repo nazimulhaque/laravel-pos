@@ -37,7 +37,6 @@ class PrinterGroupController extends Controller
         $printer_groups = new PrinterGroup();
         if ($request->filled('search')) {
             $printer_groups = $printer_groups->where('description', 'LIKE', "%{$request->search}%")->orderBy('description')->paginate(10);
-            // return redirect()->route('unit.index')->with('units', $units);
         }
         return view('printer_group.index')
             ->with('printer_groups', $printer_groups)

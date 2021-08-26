@@ -43,6 +43,8 @@
 <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <script>
     $(document).ready(function() {
+        enableSearch();
+        
         $(document).on('click', '.btn-delete', function() {
             $this = $(this);
             const swalWithBootstrapButtons = Swal.mixin({
@@ -75,5 +77,12 @@
             })
         })
     })
+
+    function enableSearch() {
+        let formSearch = document.getElementById("form_search");
+        formSearch.style.display = "block";
+        let actionIndex = "{{ route('department.search') }}";
+        formSearch.setAttribute("action", actionIndex);
+    }
 </script>
 @endsection

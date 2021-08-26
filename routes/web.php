@@ -49,6 +49,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/new_location', [LocationController::class, 'newLocation'])->name('location.new_location');
 
     // Routes for search
+    Route::get('/search_department', [DepartmentController::class, 'search'])->name('department.search');
+    Route::get('/search_location', [LocationController::class, 'search'])->name('location.search');
     Route::get('/search_unit', [UnitController::class, 'search'])->name('unit.search');
     Route::get('/search_tax', [TaxController::class, 'search'])->name('tax.search');
     Route::get('/search_printer_group', [PrinterGroupController::class, 'search'])->name('printer_group.search');

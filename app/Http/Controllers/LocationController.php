@@ -33,6 +33,20 @@ class LocationController extends Controller
     }
 
     /**
+     * Search result.
+     */
+    public function search(Request $request)
+    {
+        $locations = new Location();
+        if ($request->filled('search')) {
+            $locations = $locations->where('location_name', 'LIKE', "%{$request->search}%")->orderBy('location_name')->paginate(10);
+        }
+        return view('location.index')
+            ->with('locations', $locations)
+            ->with('search', $request->search);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

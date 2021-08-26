@@ -37,7 +37,6 @@ class ModifiersCategoryController extends Controller
         $modifiers_categories = new ModifiersCategory();
         if ($request->filled('search')) {
             $modifiers_categories = $modifiers_categories->where('description', 'LIKE', "%{$request->search}%")->orderBy('description')->paginate(10);
-            // return redirect()->route('unit.index')->with('units', $units);
         }
         return view('modifiers_category.index')
             ->with('modifiers_categories', $modifiers_categories)
